@@ -1,11 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-using ProductApp.Application.Interfaces.Repository;
-using ProductApp.Application.Utils;
+﻿using Microsoft.Extensions.DependencyInjection;
 using ProductApp.Persistance.Context;
-using ProductApp.Persistance.Repositories.Concrete;
 
-namespace ProductApp.Persistance
+namespace Test
 {
     public static class ServiceRegistration
     {

@@ -10,22 +10,21 @@ namespace ProductApp.Persistance.Context
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         {
-            
+            this.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTracking;
+            this.ChangeTracker.LazyLoadingEnabled = true;
+            this.ChangeTracker.AutoDetectChangesEnabled = true;
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            base.OnConfiguring(optionsBuilder);
+            optionsBuilder.EnableDetailedErrors();
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Product>().HasData(
-                new Product() { Id = Guid.NewGuid(), Name = "Pen", Value = 10, Quantity = 100 ,CreateDate=DateTime.Now},
-                new Product() { Id = Guid.NewGuid(), Name = "Pencil", Value = 7, Quantity = 50, CreateDate = DateTime.Now },
-                new Product() { Id = Guid.NewGuid(), Name = "Paper", Value = 1, Quantity = 1000, CreateDate = DateTime.Now },
-                new Product() { Id = Guid.NewGuid(), Name = "Book", Value = 50, Quantity = 500, CreateDate = DateTime.Now }
-                );
             base.OnModelCreating(modelBuilder); 
-
-
         }
 
 
-        public DbSet<Product> Products { get; set; }
+        public DbSet<Product> Product { get; set; }
     }
 }

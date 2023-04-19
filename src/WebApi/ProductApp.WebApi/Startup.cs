@@ -6,6 +6,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ProductApp.Persistance;
 using ProductApp.Application;
+using ProductApp.Application.Utils;
+using ProductApp.Persistance.Context;
+using Microsoft.EntityFrameworkCore;
+
 namespace ProductApp.WebApi
 {
     public class Startup
@@ -19,7 +23,7 @@ namespace ProductApp.WebApi
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {      
             services.AddPersistanceRegistration();
             services.AddApplicationRegistration();
             services.AddControllers();

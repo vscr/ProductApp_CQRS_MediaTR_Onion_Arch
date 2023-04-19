@@ -1,0 +1,4 @@
+in package manager console:
+
+add-migration “initial”
+update-database
