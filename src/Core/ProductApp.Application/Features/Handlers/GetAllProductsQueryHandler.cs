@@ -25,7 +25,7 @@ namespace ProductApp.Application.Features.Handlers
         }
         public async Task<ServiceResponse<List<ProductDto>>> Handle(GetAllProductsQuery request, CancellationToken cancellationToken)
         {
-            var products = _repository.GetAllAsync();
+            var products = await _repository.GetAllAsync();
             var dtoList = mapper.Map<List<ProductDto>>(products);
             return new ServiceResponse<List<ProductDto>>(dtoList);
         }
